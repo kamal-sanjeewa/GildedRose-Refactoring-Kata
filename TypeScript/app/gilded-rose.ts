@@ -53,23 +53,19 @@ export class GildedRose {
     this.increaseQuality(item);
     item.sellIn--;
 
-    if (item.sellIn < 0 && item.quality < 50) {
+    if (item.sellIn < 0) {
       this.increaseQuality(item);
     }
   }
 
   private updateBackStage(item: Item) {
-    if (item.quality < 50) {
-      this.increaseQuality(item);
+    this.increaseQuality(item);
 
-      if (item.quality < 50) {
-        if (item.sellIn < 11) {
-          this.increaseQuality(item);
-        }
-        if (item.sellIn < 6) {
-          this.increaseQuality(item);
-        }
-      }
+    if (item.sellIn < 11) {
+      this.increaseQuality(item);
+    }
+    if (item.sellIn < 6) {
+      this.increaseQuality(item);
     }
 
     item.sellIn = item.sellIn - 1;
