@@ -36,7 +36,6 @@ export class GildedRose {
           break;
 
         case ItemType.SULFURAS:
-          GildedRose.updateSulfuras(item);
           break;
 
         case ItemType.CONJURED:
@@ -81,8 +80,6 @@ export class GildedRose {
       item.quality = 0;
     }
   }
-
-  private static updateSulfuras(item: Item) {}
 
   private static updateConjured(item: Item) {
     item.quality -= 2;
