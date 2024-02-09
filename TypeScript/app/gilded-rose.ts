@@ -10,7 +10,7 @@ export class Item {
   }
 }
 
-const enum ItemType {
+export enum ItemType {
   BRIE = "Aged Brie",
   BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert",
   SULFURAS = "Sulfuras, Hand of Ragnaros",
@@ -28,28 +28,28 @@ export class GildedRose {
     for (let item of this.items) {
       switch (item.name) {
         case ItemType.BRIE:
-          GildedRose.updateBrie(item);
+          this.updateBrie(item);
           continue;
 
         case ItemType.BACKSTAGE:
-          GildedRose.updateBackStage(item);
+          this.updateBackStage(item);
           break;
 
         case ItemType.SULFURAS:
           break;
 
         case ItemType.CONJURED:
-          GildedRose.updateConjured(item);
+          this.updateConjured(item);
           break;
 
         default:
-          GildedRose.updateDefault(item);
+          this.updateDefault(item);
       }
     }
     return this.items;
   }
 
-  private static updateBrie(item: Item) {
+  private updateBrie(item: Item) {
     if (item.quality < 50) {
       item.quality++;
     }
@@ -60,7 +60,7 @@ export class GildedRose {
     }
   }
 
-  private static updateBackStage(item: Item) {
+  private updateBackStage(item: Item) {
     if (item.quality < 50) {
       item.quality++;
 
@@ -81,12 +81,12 @@ export class GildedRose {
     }
   }
 
-  private static updateConjured(item: Item) {
+  private updateConjured(item: Item) {
     item.quality -= 2;
     item.sellIn--;
   }
 
-  private static updateDefault(item: Item) {
+  private updateDefault(item: Item) {
     if (item.quality > 0) {
       item.quality--;
     }
