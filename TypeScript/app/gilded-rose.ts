@@ -14,6 +14,7 @@ const enum ItemType {
   BRIE = 'Aged Brie',
   BACKSTAGE = 'Backstage passes to a TAFKAL80ETC concert',
   SULFURAS = 'Sulfuras, Hand of Ragnaros',
+  CONJURED = "Conjured",
 }
 
 export class GildedRose {
@@ -36,6 +37,10 @@ export class GildedRose {
 
         case ItemType.SULFURAS:
           GildedRose.updateSulfuras(item);
+          break;
+
+        case ItemType.CONJURED:
+          GildedRose.updateConjured(item);
           break;
 
         default:
@@ -79,6 +84,11 @@ export class GildedRose {
 
   private static updateSulfuras(item: Item) {
     
+  }
+
+  private static updateConjured(item: Item) {
+    item.quality = item.quality - 2;
+    item.sellIn = item.sellIn - 1;
   }
 
   private static updateDefault(item: Item) {
