@@ -11,9 +11,9 @@ export class Item {
 }
 
 const enum ItemType {
-  BRIE = 'Aged Brie',
-  BACKSTAGE = 'Backstage passes to a TAFKAL80ETC concert',
-  SULFURAS = 'Sulfuras, Hand of Ragnaros',
+  BRIE = "Aged Brie",
+  BACKSTAGE = "Backstage passes to a TAFKAL80ETC concert",
+  SULFURAS = "Sulfuras, Hand of Ragnaros",
   CONJURED = "Conjured",
 }
 
@@ -52,54 +52,52 @@ export class GildedRose {
 
   private static updateBrie(item: Item) {
     if (item.quality < 50) {
-      item.quality = item.quality + 1;
+      item.quality++;
     }
-    item.sellIn = item.sellIn - 1;
-    
+    item.sellIn--;
+
     if (item.sellIn < 0 && item.quality < 50) {
-      item.quality = item.quality + 1;
+      item.quality++;
     }
   }
 
   private static updateBackStage(item: Item) {
     if (item.quality < 50) {
-      item.quality = item.quality + 1;
+      item.quality++;
 
-      if(item.quality < 50){
+      if (item.quality < 50) {
         if (item.sellIn < 11) {
-          item.quality = item.quality + 1;
+          item.quality++;
         }
         if (item.sellIn < 6) {
-          item.quality = item.quality + 1;
+          item.quality++;
         }
       }
     }
-  
+
     item.sellIn = item.sellIn - 1;
-    
+
     if (item.sellIn < 0) {
       item.quality = 0;
     }
   }
 
-  private static updateSulfuras(item: Item) {
-    
-  }
+  private static updateSulfuras(item: Item) {}
 
   private static updateConjured(item: Item) {
-    item.quality = item.quality - 2;
-    item.sellIn = item.sellIn - 1;
+    item.quality -= 2;
+    item.sellIn--;
   }
 
   private static updateDefault(item: Item) {
     if (item.quality > 0) {
-      item.quality = item.quality - 1;
+      item.quality--;
     }
 
-    item.sellIn = item.sellIn - 1;
+    item.sellIn--;
 
     if (item.sellIn < 0 && item.quality > 0) {
-      item.quality = item.quality - 1;
+      item.quality--;
     }
   }
 }
